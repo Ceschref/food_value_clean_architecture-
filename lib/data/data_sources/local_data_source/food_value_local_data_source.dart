@@ -5,7 +5,12 @@ import 'package:web_provise/data/models/food_value_model.dart';
 
 import '../../../core/http_client/list_response.dart';
 
-class FoodValueLocalDataSource {
+abstract class FoodValueLocalDataSource {
+  Future<ListResponse<FoodValueModel>> getListFoodValue();
+}
+
+class FoodValueLocalDataSourceImpl implements FoodValueLocalDataSource {
+  @override
   Future<ListResponse<FoodValueModel>> getListFoodValue() async {
     try {
       return ListResponse<FoodValueModel>(

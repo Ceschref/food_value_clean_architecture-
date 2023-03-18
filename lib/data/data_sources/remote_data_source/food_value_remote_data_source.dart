@@ -4,11 +4,16 @@ import 'package:web_provise/data/models/food_value_model.dart';
 
 import '../../../core/http_client/list_response.dart';
 
-class FoodValueRemoteDataSource {
-  FoodValueRemoteDataSource({required this.apiProvider});
+abstract class FoodValueRemoteDataSource {
+  Future<ListResponse<FoodValueModel>> getListFoodValue();
+}
+
+class FoodValueRemoteDataSourceImpl implements FoodValueRemoteDataSource {
+  FoodValueRemoteDataSourceImpl({required this.apiProvider});
 
   ApiProviderRepository apiProvider;
 
+  @override
   Future<ListResponse<FoodValueModel>> getListFoodValue() async {
     try {
       final rawResponse = await apiProvider.getRequest(

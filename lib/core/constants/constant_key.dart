@@ -1,4 +1,4 @@
 mixin HiveKeys {
-  static const boxName = 'webprovise';
+  static const boxName = 'webProvise';
   static const listFoodValueKey = 'listFoodValueKey';
 }

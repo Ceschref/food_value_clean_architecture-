@@ -37,17 +37,23 @@ class _WebProviseState extends State<FoodValueScreen> {
           child: Column(
             children: [
               ValueListenableBuilder<bool>(
-                  valueListenable: _makeError,
-                  builder: (context, snapshot, _) {
-                    return SwitchListTile(
-                      title: const Text('Make error'),
-                      value: snapshot,
-                      onChanged: (bool value) {
-                        _foodValueCubit.getListFoodValue(makeError: value);
-                        _makeError.value = value;
-                      },
-                    );
-                  }),
+                valueListenable: _makeError,
+                builder: (context, snapshot, _) {
+                  return SwitchListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: const Text(
+                      'Make Error',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    activeColor: Colors.green,
+                    value: snapshot,
+                    onChanged: (bool value) {
+                      _foodValueCubit.getListFoodValue(makeError: value);
+                      _makeError.value = value;
+                    },
+                  );
+                },
+              ),
               Expanded(
                 child: BlocBuilder<FoodValueCubit, FoodValueState>(
                   buildWhen: (previous, current) =>
@@ -61,7 +67,7 @@ class _WebProviseState extends State<FoodValueScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Something went wrong: ${state.errorMessage ?? ''}',
+                              'Error: ${state.errorMessage ?? ''}',
                               style: const TextStyle(color: Colors.red),
                             ),
                             const SizedBox(

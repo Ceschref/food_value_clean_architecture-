@@ -31,13 +31,20 @@ class ItemFoodValueWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),
           bottomLeft: Radius.circular(16),
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.1),
+            offset: const Offset(5, 5),
+            blurRadius: 5, // changes position of shadow
+          ),
+        ],
       ),
       margin: const EdgeInsets.only(top: 16),
       child: Row(
@@ -51,7 +58,7 @@ class ItemFoodValueWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    foodValue?.name ?? '' ,
+                    foodValue?.name ?? '',
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
@@ -60,7 +67,7 @@ class ItemFoodValueWidget extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    foodValue?.description ?? '' ,
+                    foodValue?.description ?? '',
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: const TextStyle(fontSize: 13),
@@ -71,8 +78,8 @@ class ItemFoodValueWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildItemValue('Calories: ', foodValue?.calories ),
-                      _buildItemValue('Fats: ', foodValue?.fats ),
+                      _buildItemValue('Calories: ', foodValue?.calories),
+                      _buildItemValue('Fats: ', foodValue?.fats),
                     ],
                   ),
                   const SizedBox(
@@ -81,14 +88,14 @@ class ItemFoodValueWidget extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildItemValue('Proteins: ', foodValue?.proteins ),
-                      _buildItemValue('Carbos: ', foodValue?.carbos ),
+                      _buildItemValue('Proteins: ', foodValue?.proteins),
+                      _buildItemValue('Carbos: ', foodValue?.carbos),
                     ],
                   ),
                   const SizedBox(
                     height: 5,
                   ),
-                  _buildItemValue('Time: ', foodValue?.time ),
+                  _buildItemValue('Time: ', foodValue?.time),
                 ],
               ),
             ),
@@ -103,7 +110,8 @@ class ItemFoodValueWidget extends StatelessWidget {
                 topRight: Radius.circular(16),
               ),
               child: Image.network(
-                foodValue?.thumb ?? 'https://img.hellofresh.com/f_auto,q_auto,w_300/hellofresh_s3/image/533143aaff604d567f8b4571.jpg' ,
+                foodValue?.thumb ??
+                    'https://img.hellofresh.com/f_auto,q_auto,w_300/hellofresh_s3/image/533143aaff604d567f8b4571.jpg',
                 height: 120,
                 fit: BoxFit.fitHeight,
               ),

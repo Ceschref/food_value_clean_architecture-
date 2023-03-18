@@ -31,8 +31,10 @@ class MyApp extends StatelessWidget {
         ),
         RepositoryProvider<FoodValueRepository>(
           create: (context) => FoodValueRepositoryImpl(
-            foodValueLocalDataSource: FoodValueLocalDataSource(),
-            foodValueRemoteDataSource: FoodValueRemoteDataSource(apiProvider: context.read<ApiProviderRepository>()),
+            foodValueLocalDataSource: FoodValueLocalDataSourceImpl(),
+            foodValueRemoteDataSource: FoodValueRemoteDataSourceImpl(
+              apiProvider: context.read<ApiProviderRepository>(),
+            ),
           ),
         ),
       ],

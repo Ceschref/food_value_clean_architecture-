@@ -24,7 +24,7 @@ class FoodValueRepositoryImpl implements FoodValueRepository {
       }
       return foodValueRemoteDataSource.getListFoodValue();
     } else {
-      throw CustomException(400, 'Proactive error');
+      throw CustomException('Proactive error', 'Proactive error');
     }
   }
 }
