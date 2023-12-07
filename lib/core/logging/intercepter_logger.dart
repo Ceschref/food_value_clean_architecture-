@@ -7,7 +7,8 @@ class AppInterceptorLogging extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     if (!kReleaseMode) {
-      printOut('*** Request ***\nrequest[${options.method}] ==> ${options.uri}', colorCode: 36);
+      printOut('*** Request ***\nrequest[${options.method}] ==> ${options.uri}',
+          colorCode: 36);
       if (options.method == 'POST' || options.method == 'PUT') {
         printOut('*** PARAMS ***\n${options.data}', colorCode: 34);
       }
@@ -21,13 +22,15 @@ class AppInterceptorLogging extends Interceptor {
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
     if (!kReleaseMode) {
-      printOut('*** Response ***\nRESPONSE[${response.statusCode}] <=== ${response.realUri}', colorCode: 32);
+      printOut(
+          '*** Response ***\nRESPONSE[${response.statusCode}] <=== ${response.realUri}',
+          colorCode: 32);
     }
     return super.onResponse(response, handler);
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) {
+  void onError(DioException err, ErrorInterceptorHandler handler) {
     if (!kReleaseMode) {
       printOut(
           '*** Error ***\nERROR[${err.response?.data?['code'] ?? err.response?.statusCode}] <=== ${err.requestOptions.uri} WITH MESSAGE: ${err.response?.data?['message'] ?? err.message}',

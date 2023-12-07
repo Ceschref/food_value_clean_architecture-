@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:web_provise/core/helper/local_storage_helper.dart';
-import 'package:web_provise/data/data_sources/local_data_source/food_value_local_data_source.dart';
-import 'package:web_provise/data/data_sources/remote_data_source/food_value_remote_data_source.dart';
+import 'package:web_provise/data/data_source_impl/food_value_local_data_source_impl.dart';
+import 'package:web_provise/data/data_source_impl/food_value_remote_data_source_impl.dart';
 import 'package:web_provise/data/repositories_impl/food_value_repository_impl.dart';
 import 'package:web_provise/domain/repositories/food_value_repository.dart';
 import 'package:web_provise/representation/cubit/food_value_cubit/food_value_cubit.dart';

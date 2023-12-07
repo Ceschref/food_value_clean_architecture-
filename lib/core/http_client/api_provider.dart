@@ -92,7 +92,7 @@ class ApiProviderRepositoryImpl implements ApiProviderRepository {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _catchException(e);
     }
   }
@@ -120,7 +120,7 @@ class ApiProviderRepositoryImpl implements ApiProviderRepository {
       );
 
       return response;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _catchException(e);
     }
   }
@@ -143,7 +143,7 @@ class ApiProviderRepositoryImpl implements ApiProviderRepository {
         cancelToken: cancelToken,
       );
       return response;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _catchException(e);
     }
   }
@@ -170,7 +170,7 @@ class ApiProviderRepositoryImpl implements ApiProviderRepository {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _catchException(e);
     }
   }
@@ -197,12 +197,12 @@ class ApiProviderRepositoryImpl implements ApiProviderRepository {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _catchException(e);
     }
   }
 
-  Response<T> _catchException<T>(DioError dioError) {
+  Response<T> _catchException<T>(DioException dioError) {
     throw CustomException(dioError.response?.statusCode, dioError.response?.statusMessage);
   }
 
@@ -227,7 +227,7 @@ class ApiProviderRepositoryImpl implements ApiProviderRepository {
         onReceiveProgress: onReceiveProgress,
       );
       return response;
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return _catchException(e);
     }
   }
