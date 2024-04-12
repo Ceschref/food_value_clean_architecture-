@@ -20,8 +20,10 @@ class FoodValueCubit extends Cubit<FoodValueState> {
     try {
       emit(state.copyWith(getListFoodValueDataState: DataState.preload));
       final result = await foodValueRepository.getListFoodValue(makeError);
-      final jsos = result.items.map((x) => (x as FoodValueModel).toJson()).toList();
-      LocalStorageHelper.setValue(HiveKeys.listFoodValueKey, jsos);
+      LocalStorageHelper.setValue(
+        HiveKeys.listFoodValueKey,
+        result.items.map((e) => (e as FoodValueModel).toJson()).toList(),
+      );
       emit(
         state.copyWith(
           getListFoodValueDataState: DataState.data,

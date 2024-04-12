@@ -9,17 +9,24 @@ class FoodValueScreen extends StatefulWidget {
   const FoodValueScreen({super.key});
 
   @override
-  State<FoodValueScreen> createState() => _WebProviseState();
+  State<FoodValueScreen> createState() => _FoodValueScreenState();
 }
 
-class _WebProviseState extends State<FoodValueScreen> {
+class _FoodValueScreenState extends State<FoodValueScreen> {
   late final FoodValueCubit _foodValueCubit;
   final ValueNotifier<bool> _makeError = ValueNotifier<bool>(false);
 
   @override
   void initState() {
     super.initState();
-    _foodValueCubit = context.read<FoodValueCubit>()..getListFoodValue();
+    _foodValueCubit = context.read<FoodValueCubit>();
+    _foodValueCubit.getListFoodValue();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _foodValueCubit.close();
   }
 
   @override
@@ -56,8 +63,7 @@ class _WebProviseState extends State<FoodValueScreen> {
               ),
               Expanded(
                 child: BlocBuilder<FoodValueCubit, FoodValueState>(
-                  buildWhen: (previous, current) =>
-                      previous.getListFoodValueDataState != current.getListFoodValueDataState,
+                  buildWhen: (previous, current) => previous.getListFoodValueDataState != current.getListFoodValueDataState,
                   builder: (context, state) {
                     if (state.getListFoodValueDataState.isShowLoading) {
                       return const Center(child: CircularProgressIndicator());
